@@ -106,16 +106,13 @@ def save_df(df, fn, geomtype=ogr.wkbMultiLineString):
     QApplication.processEvents()
 
     # Add the fields we're interested in
-    for name, c in df.iteritems():
+    for name, c in df.items():
         layer.CreateField(ogr.FieldDefn(name, pd2ogr[c.dtype.name]))
 
     # Process df and add the attributes and features to the shapefile
     for j, row in df.iterrows():
         feature = ogr.Feature(layer.GetLayerDefn())
-        #print(row.iteritems())
-        #print(feature)
         for i, value in row.iteritems():
-            #print(feature.SetField(str(i), str('test')))
             feature.SetField(i, value)
 
         # create the WKT for the feature using Python string formatting
