@@ -112,7 +112,7 @@ def save_df(df, fn, geomtype=ogr.wkbMultiLineString):
     # Process df and add the attributes and features to the shapefile
     for j, row in df.iterrows():
         feature = ogr.Feature(layer.GetLayerDefn())
-        for i, value in row.iteritems():
+        for i, value in row.items():
             feature.SetField(i, value)
 
         # create the WKT for the feature using Python string formatting
