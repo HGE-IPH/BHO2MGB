@@ -3781,7 +3781,10 @@ class Grid(object):
         minsteps = minsteps[minsteps != 0].groupby(level=0).min()
         gradmax = pd.Series(drainage_grad.flat[inside][flats.flat[inside]],
                             index=flatlabels).groupby(level=0).max().astype(int)
-        gradfactor = (0.9 * (minsteps / gradmax)).replace(np.inf, 0).append(pd.Series({0 : 0}))
+        gradfactor = pd.concat([
+            (0.9 * (minsteps / gradmax)).replace(np.inf, 0),
+            pd.Series({0 : 0})
+        ])
         drainage_grad.flat[inside[flats.flat[inside]]] *= gradfactor[flatlabels].values
         drainage_grad.flat[inside[low_edge_cells]] = 0
         dem_out = dem.astype(float) + drainage_grad

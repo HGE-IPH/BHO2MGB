@@ -706,7 +706,7 @@ def cota_area(mpols, mtrecs, demfn, handfn):
     mini_flood.index = np.arange(1, len(mini_flood)+1)
 
     # Write Cota-Area
-    ca_df = pd.DataFrame(columns = ['mini', 'z0', 'zfp', 'afp'])
+    ca_rows = []
     for _, mini in mini_flood.iterrows():
         afp = mini.drop(['z0']).astype(float)
         zi = pd.Series(mini['z0']).repeat(len(afp)).astype(int)
@@ -723,7 +723,10 @@ def cota_area(mpols, mtrecs, demfn, handfn):
                                 'zfp': zf,
                                 'afp': afp})
 
-        ca_df = ca_df.append(ca_mini, ignore_index=True)
+        ca_rows.append(ca_mini)
+
+    ca_df = pd.concat(ca_rows, ignore_index=True) if ca_rows else pd.DataFrame(
+        columns=['mini', 'z0', 'zfp', 'afp'])
 
     ca_txt = ca_df.to_string(index=False, header=False,
                              formatters = {'mini': '{:>9}'.format,
@@ -929,10 +932,9 @@ def cota_area_gee(roi_df_trecho, roi_fc_area, roi_fc_trecho, download_hand_map=0
                     .aggregate_array('sum').getInfo())
 
     # Operations to get flooded area in km2
-    flood_count_df = pd.DataFrame()
-    for i in flood_count:
-        i = pd.DataFrame(i)
-        flood_count_df = flood_count_df.append(i[1])
+    flood_count_df = pd.concat(
+        [pd.DataFrame(i)[1].to_frame().T for i in flood_count],
+        ignore_index=True)
     flood_count_df = flood_count_df.cumsum(axis=1)
     flood_count_df.reset_index(drop=True, inplace=True)
 
@@ -947,7 +949,7 @@ def cota_area_gee(roi_df_trecho, roi_fc_area, roi_fc_trecho, download_hand_map=0
     mini_flood.index = np.arange(1, len(mini_flood)+1)
 
     # Write Cota-Area
-    ca_df = pd.DataFrame(columns = ['mini', 'z0', 'zfp', 'afp'])
+    ca_rows = []
     for mini in mini_flood.iterrows():
         mini=mini[1]
         afp = mini.drop(['z0']).astype(float)
@@ -965,7 +967,10 @@ def cota_area_gee(roi_df_trecho, roi_fc_area, roi_fc_trecho, download_hand_map=0
                                 'zfp': zf,
                                 'afp': afp})
 
-        ca_df = ca_df.append(ca_mini, ignore_index=True)
+        ca_rows.append(ca_mini)
+
+    ca_df = pd.concat(ca_rows, ignore_index=True) if ca_rows else pd.DataFrame(
+        columns=['mini', 'z0', 'zfp', 'afp'])
 
     ca_txt = ca_df.to_string(index=False, header=False,
                              formatters = {'mini': '{:>9}'.format,

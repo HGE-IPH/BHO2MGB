@@ -821,7 +821,7 @@ def write_cota_area(mareasfn, mtrecsfn, demfn, handfn):
     mini_flood.index = np.arange(1, len(mini_flood)+1)
 
     # Write Cota-Area
-    ca_df = pd.DataFrame(columns = ['mini', 'z0', 'zfp', 'afp'])
+    ca_rows = []
     for _, mini in mini_flood.iterrows():
         afp = mini.drop(['z0']).astype(float)
         zi = pd.Series(mini['z0']).repeat(len(afp)).astype(int)
@@ -838,7 +838,9 @@ def write_cota_area(mareasfn, mtrecsfn, demfn, handfn):
                                 'zfp': zf,
                                 'afp': afp})
 
-        ca_df = ca_df.append(ca_mini, ignore_index=True)
+        ca_rows.append(ca_mini)
+
+    ca_df = pd.concat(ca_rows, ignore_index=True)
 
     ca_txt = ca_df.to_string(index=False, header=False,
                              formatters = {'mini': '{:>9}'.format,
