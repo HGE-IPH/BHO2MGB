@@ -62,8 +62,9 @@ local center_image = {
   end,
   Para = function(el)
     local text = pandoc.utils.stringify(el.content)
+    local table_caption = text:match("^Tabela %d+%.") and not FORMAT:match("latex")
     if (#el.content == 1 and el.content[1].t == "Image") or
-       text:match("^Figura %d+%.") or text:match("^Tabela %d+%.") then
+       text:match("^Figura %d+%.") or table_caption then
       return pandoc.Div({el}, pandoc.Attr("", {"center-image"}, {}))
     end
   end

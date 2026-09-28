@@ -11,6 +11,7 @@ pandoc index.md \
   --from=markdown-implicit_figures \
   --lua-filter=sections.lua \
   --lua-filter=figures.lua \
+  --lua-filter=tables.lua \
   --standalone \
   --number-sections \
   --toc \
