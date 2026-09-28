@@ -131,6 +131,3 @@ dmypy.json
 # releases
 *.zip
 *.pdf
-
-# Versioned Portuguese user manual PDF
-!docs/pt/manual-bho2mgb.pdf
