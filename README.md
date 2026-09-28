@@ -6,6 +6,8 @@
 
 English and Portuguese descriptions below
 
+**Application manual (English):** [Markdown](docs/en/index.md) · [PDF](docs/en/manual-bho2mgb.pdf) · [build instructions](docs/en/README.md)
+
 **Manual de aplicação (português):** [Markdown](docs/pt/index.md) · [PDF](docs/pt/manual-bho2mgb.pdf) · [como gerar o PDF](docs/pt/README.md)
 
 ---

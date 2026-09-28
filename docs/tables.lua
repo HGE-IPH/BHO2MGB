@@ -92,7 +92,8 @@ function Pandoc(doc)
       table_number = table_number + 1
       local previous = output[#output]
       if not previous or previous.t ~= "Para" or
-         not pandoc.utils.stringify(previous.content):match("^Tabela %d+%.") then
+         not (pandoc.utils.stringify(previous.content):match("^Tabela %d+%.") or
+              pandoc.utils.stringify(previous.content):match("^Table %d+%.")) then
         error("Expected a Markdown paragraph caption before table " .. table_number)
       end
       table.remove(output, #output)

@@ -2,7 +2,7 @@
 \usepackage{fontspec}
 \setmainfont{TeX Gyre Termes}
 \usepackage{polyglossia}
-\setdefaultlanguage{portuguese}
+\setdefaultlanguage{$latex-language$}
 \usepackage[a4paper,margin=2.35cm,headheight=15pt,headsep=0.45cm,footskip=1cm]{geometry}
 \usepackage{graphicx}
 \usepackage{booktabs}
@@ -22,9 +22,9 @@
 \setlength{\parskip}{0.35\baselineskip}
 \setcounter{secnumdepth}{4}
 \setcounter{tocdepth}{4}
-\renewcommand{\contentsname}{Sumário}
-\renewcommand{\figurename}{Figura}
-\renewcommand{\tablename}{Tabela}
+\renewcommand{\contentsname}{$contents-title$}
+\renewcommand{\figurename}{$figure-title$}
+\renewcommand{\tablename}{$table-title$}
 \captionsetup[figure]{font=small,labelfont=bf,justification=centering}
 \counterwithout{figure}{section}
 \makeatletter
@@ -34,13 +34,13 @@
 \setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[L]{\small MANUAL DE APLICAÇÃO}
+\fancyhead[L]{\small $header-title$}
 \fancyhead[R]{\small BHO2MGB V 0.1}
 \fancyfoot[C]{\thepage}
 \renewcommand{\headrulewidth}{0.4pt}
 \fancypagestyle{plain}{%
   \fancyhf{}
-  \fancyhead[L]{\small MANUAL DE APLICAÇÃO}
+  \fancyhead[L]{\small $header-title$}
   \fancyhead[R]{\small BHO2MGB V 0.1}
   \fancyfoot[C]{\thepage}
   \renewcommand{\headrulewidth}{0.4pt}
@@ -53,7 +53,10 @@
 \makeatother
 \providecommand{\tightlist}{\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
 \begin{document}
-\input{cover.tex}
+\newcommand{\manualcoverdate}{$date$}
+\newcommand{\manualcoverfirst}{$cover-first$}
+\newcommand{\manualcoversecond}{$cover-second$}
+\input{../cover.tex}
 \pagenumbering{arabic}
 $if(toc)$
 \tableofcontents

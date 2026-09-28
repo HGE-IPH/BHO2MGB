@@ -1,6 +1,6 @@
 # Manual BHO2MGB em português
 
-O arquivo `index.md` é a fonte oficial desta documentação. As figuras ficam em `assets/`, e o [PDF pronto](manual-bho2mgb.pdf) é gerado a partir desses arquivos versionados.
+O arquivo `index.md` é a fonte oficial desta documentação. As figuras e os arquivos de renderização do PDF ficam na pasta [`docs/`](../), e o [PDF pronto](manual-bho2mgb.pdf) é gerado a partir desses arquivos versionados.
 
 ## Gerar o PDF
 

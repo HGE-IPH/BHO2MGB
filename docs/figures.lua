@@ -1,6 +1,13 @@
--- Larguras arredondadas a 0,1 cm, estimadas pela resolução nativa (ppi)
--- e pelo tamanho de impressão das figuras no PDF original.
+-- Keep low-resolution screenshots near or above 150 effective DPI in the PDF.
+-- Widths apply to both language editions; source images live in docs/assets.
 local figure_widths = {
+  ["figura-01"] = "6.5cm",
+  ["figura-05"] = "6.0cm",
+  ["figura-06"] = "14.5cm",
+  ["figura-07"] = "7.0cm",
+  ["figura-08"] = "7.0cm",
+  ["figura-09"] = "5.0cm",
+  ["figura-11"] = "5.5cm",
   ["figura-13"] = "15.0cm",
   ["figura-14"] = "15.0cm",
   ["figura-15"] = "14.4cm",
@@ -8,21 +15,21 @@ local figure_widths = {
   ["figura-17"] = "15.0cm",
   ["figura-18"] = "12.7cm",
   ["figura-19"] = "12.7cm",
-  ["figura-20"] = "10.8cm",
-  ["figura-21"] = "9.1cm",
-  ["figura-22"] = "8.6cm",
-  ["figura-23"] = "15.0cm",
+  ["figura-20"] = "10.5cm",
+  ["figura-21"] = "6.9cm",
+  ["figura-22"] = "6.0cm",
+  ["figura-23"] = "13.0cm",
   ["figura-24"] = "13.6cm",
-  ["figura-25"] = "8.3cm",
-  ["figura-26"] = "13.8cm",
+  ["figura-25"] = "6.8cm",
+  ["figura-26"] = "12.5cm",
   ["figura-27"] = "15.0cm",
   ["figura-28"] = "15.0cm",
-  ["figura-29"] = "13.0cm",
+  ["figura-29"] = "11.0cm",
   ["figura-30"] = "14.3cm",
   ["figura-31"] = "13.3cm",
   ["figura-32"] = "15.0cm",
-  ["figura-33"] = "15.0cm",
-  ["figura-34"] = "12.8cm",
+  ["figura-33"] = "12.0cm",
+  ["figura-34"] = "10.5cm",
   ["figura-35"] = "15.0cm",
   ["figura-36"] = "15.0cm",
   ["figura-37"] = "15.0cm",
@@ -44,9 +51,9 @@ local center_image = {
   end,
   Para = function(el)
     local text = pandoc.utils.stringify(el.content)
-    local table_caption = text:match("^Tabela %d+%.") and not FORMAT:match("latex")
+    local table_caption = (text:match("^Tabela %d+%.") or text:match("^Table %d+%.")) and not FORMAT:match("latex")
     if (#el.content == 1 and el.content[1].t == "Image") or
-       text:match("^Figura %d+%.") or table_caption then
+       (text:match("^Figura %d+%.") or text:match("^Figure %d+%.")) or table_caption then
       return pandoc.Div({el}, pandoc.Attr("", {"center-image"}, {}))
     end
   end

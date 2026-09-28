@@ -6,15 +6,15 @@
   \fill[coverblue] ($(current page.north east)+(-0.40\paperwidth,0)$) rectangle (current page.south east);
   \fill[black] (current page.north west) ++(0,-0.25\paperheight) rectangle ++(0.80\paperwidth,-0.075\paperheight);
   \node[align=center,anchor=center,font={\fontsize{20}{24}\selectfont\bfseries}] at ($(current page.north west)+(0.80\paperwidth,-0.16\paperheight)$)
-    {Manual de\\aplicação};
+    {\manualcoverfirst\\\manualcoversecond};
   \node[anchor=east,text=white] at ($(current page.north west)+(0.78\paperwidth,-0.285\paperheight)$)
     {\fontsize{27}{32}\selectfont BHO2MGB};
   \node[anchor=center] at ($(current page.north west)+(0.28\paperwidth,-0.46\paperheight)$)
-    {\includegraphics[width=0.30\paperwidth]{assets/logo-bho.png}};
+    {\includegraphics[width=0.30\paperwidth]{../assets/logo-bho.png}};
   \node[align=center,anchor=center] at ($(current page.north west)+(0.80\paperwidth,-0.37\paperheight)$)
-    {\fontsize{14}{17}\selectfont\bfseries Maio de 2022};
+    {\fontsize{14}{17}\selectfont\bfseries \manualcoverdate};
   \node[anchor=south east] at ($(current page.south east)+(-0.035\paperwidth,0.035\paperheight)$)
-    {\includegraphics[width=0.34\paperwidth]{assets/logo-hge.png}};
+    {\includegraphics[width=0.34\paperwidth]{../assets/logo-hge.png}};
 \end{tikzpicture}
 \end{titlepage}
 \restoregeometry

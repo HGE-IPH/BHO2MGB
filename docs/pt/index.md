@@ -36,23 +36,23 @@ Neste manual, será apresentada a realização do pré‑processamento do MGB co
 
 O download do plugin pode ser diretamente da página web do Grupo de Pesquisa de Hidrologia de Grande Escala (HGE), através do seguinte link:
 
-- https://www.ufrgs.br/hge/modelos-e-outros-produtos/bho2mgb/
+- https://github.com/HGE-IPH/BHO2MGB/releases
 
-Uma vez feito o download, o usuário deve iniciar o QGIS (última versão testada: 3.22), e instalar o complemento (plugin). Para instalar o plugin no QGIS clique na aba “Complementos” e selecione “Gerenciar e Instalar Complementos”, como mostra a
+Uma vez feito o download, o usuário deve iniciar o QGIS (última versão testada: 3.44), e instalar o complemento (plugin). Para instalar o plugin no QGIS clique na aba “Complementos” e selecione “Gerenciar e Instalar Complementos”, como mostra a
 
-![Aba de complementos](assets/figura-01.png)
+![Aba de complementos](../assets/figura-01.png)
 
 **Figura 1. Aba de complementos**
 
 Em “Install from ZIP” selecione a pasta .zip (gerada no download) em “ZIP file” e clique em “Install Plugin”, como mostra a Figura 2.
 
-![Janela para instalar plugin.](assets/figura-02.png)
+![Janela para instalar plugin.](../assets/figura-02.png)
 
 **Figura 2. Janela para instalar plugin.**
 
 A Figura 3 apresenta como o plugin irá aparecer na sua barra de tarefas do QGIS, pronto para uso.
 
-![Aparência do ícone do plugin BHO2MGB na barra de ferramentas após sua instalação.](assets/figura-03.jpg)
+![Aparência do ícone do plugin BHO2MGB na barra de ferramentas após sua instalação.](../assets/figura-03.jpg)
 
 **Figura 3. Aparência do ícone do plugin BHO2MGB na barra de ferramentas após sua instalação.**
 
@@ -111,31 +111,31 @@ O usuário pode escolher qual entre as diversas versões da BHO vai utilizar. Da
 
 A ferramenta foi desenvolvida em JavaScript no editor de códigos do GEE, e não requer do usuário conhecimentos em linguagem de programação, pois o código realiza a construção de uma interface gráfica de fácil utilização. Mesmo a versão da ferramenta no editor de código possui uma interface gráfica que facilita a sua aplicação. A Figura 4 apresenta o menu principal da ferramenta.
 
-![Menu principal do MGB-BHO Tool Kit.](assets/figura-04.png)
+![Menu principal do MGB-BHO Tool Kit.](../assets/figura-04.png)
 
 **Figura 4. Menu principal do MGB-BHO Tool Kit.**
 
 O primeiro passo para a aplicação da ferramenta é a escolha da versão da BHO com a qual se deseja trabalhar. São disponibilizados os dados nas escalas 50k, 5k e 250 para escolha do usuário através de um painel de seleção (Figura 5). Na nossa aplicação, utilizaremos a BHO 250.
 
-![Seleção da escala dos dados da BHO.](assets/figura-05.png)
+![Seleção da escala dos dados da BHO.](../assets/figura-05.png)
 
 **Figura 5. Seleção da escala dos dados da BHO.**
 
 Em seguida, o usuário deve selecionar o exutório da bacia que deseja delimitar. Isto pode ser realizado de duas maneiras: a primeira sendo a seleção direta das coordenadas do exutório no mapa através da ferramenta “Map selection”; e a segunda através da ferramenta “Code selection” onde o usuário deve informar o código pfafstetter (atributo “cobacia”) da BHO que corresponde à minibacia BHO do exutório. Ambas as ferramentas podem ser visualizadas na Figura 6. A delimitação da bacia hidrográfica é feita a partir dos arquivos de áreas e trechos da BHO com um filtro que seleciona todos os trechos e áreas a montante da minibacia BHO selecionada como exutório. Para selecionar a bacia do rio Carinhanha fazemos a seleção na ferramenta pelo código 67658111.
 
-![Seleção do exutório para delimitação da bacia hidrográfica a partir da definição do código da área da BHO do exutório (esquerda) e a partir da definição do exutório no mapa da plataforma (direita).](assets/figura-06.png)
+![Seleção do exutório para delimitação da bacia hidrográfica a partir da definição do código da área da BHO do exutório (esquerda) e a partir da definição do exutório no mapa da plataforma (direita).](../assets/figura-06.png)
 
 **Figura 6. Seleção do exutório para delimitação da bacia hidrográfica a partir da definição do código da área da BHO do exutório (esquerda) e a partir da definição do exutório no mapa da plataforma (direita).**
 
 Após a seleção dos dados referentes à BHO, o usuário deve escolher no segundo bloco o Modelo Digital de Elevação (MDE) que deseja utilizar em sua aplicação. A escolha é realizada a partir de uma ferramenta com uma pré-seleção de produtos. No nosso caso, selecionaremos o NASA-DEM 30m, como mostra a Figura 7.
 
-![Seleção do DEM.](assets/figura-07.png)
+![Seleção do DEM.](../assets/figura-07.png)
 
 **Figura 7. Seleção do DEM.**
 
 Em seguida, o usuário deve definir as informações para a geração do grid de precipitação que constam no terceiro bloco da ferramenta. O usuário pode escolher entre os produtos de estimativas de precipitação pré-selecionados, da mesma forma que foi realizada a escolha do DEM e o período para o qual deseja obter dados (Figura 8). Utilizaremos aqui dados da constelação CHIRPS no período de 2000-01-01 a 2020-12-31.
 
-![Seleção do produto e período de interesse para o grid de precipitação.](assets/figura-08.png)
+![Seleção do produto e período de interesse para o grid de precipitação.](../assets/figura-08.png)
 
 **Figura 8. Seleção do produto e período de interesse para o grid de precipitação.**
 
@@ -143,19 +143,19 @@ O resultado do processamento dos dados de precipitação é uma tabela .csv com 
 
 Por último, antes de aplicar a ferramenta, o usuário deve definir os parâmetros para o processamento das HLCs. Os parâmetros necessários são o ano do mapa de classificação de uso do solo que será utilizado, um limiar de declividade para definir classes do terreno e um limiar de altura do modelo HAND para a classificação de áreas úmidas. A Figura 9 apresenta o quarto bloco da ferramenta, onde constam os parâmetros necessários para esse processamento. Podemos deixar esses parâmetros no valor padrão.
 
-![Parâmetros utilizados no processamento das Hydrological Landscape Classes.](assets/figura-09.png)
+![Parâmetros utilizados no processamento das Hydrological Landscape Classes.](../assets/figura-09.png)
 
 **Figura 9. Parâmetros utilizados no processamento das Hydrological Landscape Classes.**
 
 Após a definição de todos os parâmetros e informações requeridas o usuário deve utilizar o botão “Generate Watershed Delineation” para gerar a delimitação da bacia hidrográfica a partir dos dados da BHO, gerar o GRID de precipitação e realizar o processamento das HLCs (Figura 10).
 
-![Resultado da aplicação da ferramenta para a bacia do rio Carinhanha.](assets/figura-10.jpg)
+![Resultado da aplicação da ferramenta para a bacia do rio Carinhanha.](../assets/figura-10.jpg)
 
 **Figura 10. Resultado da aplicação da ferramenta para a bacia do rio Carinhanha.**
 
 Após acionado este botão, uma série de botões serão apresentados mais abaixo na ferramenta (Figura 11). Cada botão carrega o nome de um arquivo de saída ou arquivo intermediário do processamento da ferramenta. Ao clicar em um desses botões, o arquivo será plotado no mapa da plataforma.
 
-![Botões gerados após a aplicação da ferramenta para a plotagem e download dos dados.](assets/figura-11.png)
+![Botões gerados após a aplicação da ferramenta para a plotagem e download dos dados.](../assets/figura-11.png)
 
 **Figura 11. Botões gerados após a aplicação da ferramenta para a plotagem e download dos dados.**
 
@@ -163,7 +163,7 @@ Na versão aplicativo da ferramenta, ao apertar esse botão também será gerado
 
 Já na versão do editor de código da ferramenta, o download é realizado a partir do botão ao lado escrito “Download”. Esse botão iniciará uma tarefa na aba “Tasks” onde o usuário deverá acionar o comando “run” para iniciar o download, da forma como é apresentado na Figura 12. Para seguir para as próximas etapas, utilizaremos os arquivos BHO Area, BHO Stream, Precipitation GRID, DEM e Hydrological Landscape Classes.
 
-![Download dos arquivos a partir da versão do editor de códigos da ferramenta.](assets/figura-12.png)
+![Download dos arquivos a partir da versão do editor de códigos da ferramenta.](../assets/figura-12.png)
 
 **Figura 12. Download dos arquivos a partir da versão do editor de códigos da ferramenta.**
 
@@ -179,41 +179,41 @@ Para começar a construção dos arquivos de entrada do MGB, primeiro clicamos n
 
 Para a realização do Step 1, primeiro carregamos os arquivos de entrada obtidos na seção 4.1. Em “BHO Area file” selecione o arquivo vetorial contendo a área da bacia hidrográfica com suas respectivas minibacias. Em “BHO Stretch file” selecione o arquivo vetorial contendo os trechos de drenagem. Em “Digital Elevation Model” selecione o arquivo raster do MDE da bacia. Em “Outlet code (“cobacia”)”, insira os códigos “cobacia” correspondentes aos exutórios de cada subbacia. No caso do rio Carinhanha, usaremos 4 subbacias, definidas pelos exutórios cujos códigos são 67658111, 6765823391, 6765841331, e 6765859. No campo “Output Directory” selecione uma pasta para salvar os resultados. O último passo é clicar em “Run”, aguardar para que o processamento chegue em 100%.
 
-![Passo 1 da ferramenta BHO2MGB](assets/figura-13.png)
+![Passo 1 da ferramenta BHO2MGB](../assets/figura-13.png)
 
 **Figura 13. Passo 1 da ferramenta BHO2MGB**
 
 Ao final do passo 1, são gerados os arquivos vetoriais roi_areas.shp e roi_trecs.shp na pasta “output” criada dentro da pasta de trabalho. Podemos carregar esses arquivos no QGIS e visualizá-los para checar se as subbacias definidas estão de acordo com o que desejamos. Para isso, podemos categorizar a visualização no QGIS de acordo com a coluna sub do arquivo de areas, conforme apresentado na Figura 14.
 
-![Arquivos de saída do passo 1.](assets/figura-14.jpg)
+![Arquivos de saída do passo 1.](../assets/figura-14.jpg)
 
 **Figura 14. Arquivos de saída do passo 1.**
 
 O passo 2 é a etapa em que as minibacias da BHO original são modificadas para se adequar melhor à simulação no MGB. Isso é feito agregando minibacias adjacentes para atenderem (1) a um comprimento de trecho mínimo (Lmin) e (2) a uma área de drenagem a montante mínima (Amin). Uma vez finalizado o passo 1, na janela do passo 2 já estarão os caminhos dos arquivos que serão utilizados (`roi_area.shp` e `roi_trecs.shp`), como apresenta a Figura 15. Podem ser alterados os parâmetros “Minum contruting area”, representando a menor unidade de área a montante (Amin) e “Minimum stream length”, representando o menor comprimento do trecho de drenagem (Lmin). Quanto menores os valores destes dois parâmetros, mais fielmente será seguida a discretização original da BHO, e mais lento será o processamento do modelo durante as simulações. Os valores padrão (30 km² para Amin e 6 km para Lmin) são uma boa opção que não compromete demasiadamente o tempo de processamento e altera minimamente a BHO original. Clique em “Run” para realizar o processamento do passo 2.
 
-![Passo 2 da ferramenta BHO2MGB.](assets/figura-15.png)
+![Passo 2 da ferramenta BHO2MGB.](../assets/figura-15.png)
 
 **Figura 15. Passo 2 da ferramenta BHO2MGB.**
 
 Como resultados do Passo 2, são gerados os arquivos mareas.shp e mtrecs.shp, que representam os arquivos de áreas e trechos, respectivamente, das minibacias agregadas para atingirem os critérios de Lmin e Amin. Esses arquivos vetoriais podem ser carregados no QGIS para conferência do usuário, como mostra a Figura 16. Observe que o número de minibacias é consideravelmente menor e mais homogêneo em tamanho em relação a BHO original (Figura 14), o que vai facilitar o processo de simulação no MGB.
 
-![Arquivos de saída do passo 2.](assets/figura-16.jpg)
+![Arquivos de saída do passo 2.](../assets/figura-16.jpg)
 
 **Figura 16. Arquivos de saída do passo 2.**
 
 Finalmente, no passo 3, vamos escrever os arquivos de entrada para o MGB, MINI.gtp e `COTA-AREA.flp`. Os arquivos de entrada já vieram carregados das etapas anteriores, com exceção do arquivo raster de unidades de resposta hidrológica (HRU). Este arquivo foi obtido na seção 4.1 deste manual, sob o nome de hlc.tif, e deve ser carregado onde indicado na Figura 17. Nessa etapa, além de carregar os arquivos, também definimos os parâmetros hidráulicos e geomorfolóficos que vão ser utilizados para escrever as informações das minibacias. Na área “River Hidraulic Options” devemos definir os campos “Set maximum reach slope to” e “Set minimum reach slope to” (máximas e mínimas declividades), e também o coeficiente de Manning em “Manning’s coefficient”. No caso do rio Carinhanha, dexaremos os valores default. No campo “Bankfull Geomorphic Relationships” é possível adequar os parâmetros de geometria do rio com base na área de drenagem. Em “Channel Width” definimos a largura e em “Channel Depth” a profundidade. Para a nossa bacia, utilizaremos os parâmetros apresentados na Figura 17 (a = 0.19; b = 0.52; c = 0.33; d = 0.66). Clicando em “Run” será concluída a última etapa do pré‑processamento, que pode levar algum tempo para rodar por completo.
 
-![Passo 3 da ferramenta BHO2MGB.](assets/figura-17.png)
+![Passo 3 da ferramenta BHO2MGB.](../assets/figura-17.png)
 
 **Figura 17. Passo 3 da ferramenta BHO2MGB.**
 
 Após o processamento completo do Passo 3, são gerados diversos arquivos resultantes na pasta “output”. É possível visualizar os arquivos raster hand.tif (Figura 18), apresentando os valores de altura à rede de drenagem mais próxima da bacia hidrográfica, e ltnd.tif (Figura 19), apresentando os valores de distância à rede de drenagem mais próxima. Estes arquivos são utilizados para cálculos internos do BHO2MGB, mas sua visualização é interessante para compreender os processos hidrológicos na bacia. Além disso, são criados os arquivos MINI.gtp, que contém as informações apresentadas na Tabela 3, e `COTA-AREA.flp`, que contém informações de área inundada por incremento de cota em cada minibacia. Estes dois últimos arquivos serão utilizados como dados de entrada do MGB.
 
-![Arquivo HAND da bacia do rio Carinhanha.](assets/figura-18.jpg)
+![Arquivo HAND da bacia do rio Carinhanha.](../assets/figura-18.jpg)
 
 **Figura 18. Arquivo HAND da bacia do rio Carinhanha.**
 
-![Arquivo LTND da bacia do rio Carinhanha.](assets/figura-19.jpg)
+![Arquivo LTND da bacia do rio Carinhanha.](../assets/figura-19.jpg)
 
 **Figura 19. Arquivo LTND da bacia do rio Carinhanha.**
 
@@ -247,7 +247,7 @@ Com os arquivos gerados nos passos anteriores é possível aplicar o MGB a parti
 
 O primeiro passo é realizar uma descrição das Unidades de Resposta Hidrológica (URHs) através da ferramenta “HRCs Description” da interface do MGB. Nesta ferramenta irão constar duas colunas, uma denominada “HRC” a qual deve ser preenchida com códigos abreviados que representam as URHs e a outra denominada “Description” onde deverá constar a descrição do código inserido na coluna anterior. Neste manual será utilizado como URH o arquivo de HLCs obtido na seção 4.1.1. A tabela foi elaborada de acordo com a Figura 20 e salva como "HRC_descrip.hrc".
 
-![Descrição das classes de resposta hidrológica.](assets/figura-20.png)
+![Descrição das classes de resposta hidrológica.](../assets/figura-20.png)
 
 **Figura 20. Descrição das classes de resposta hidrológica.**
 
@@ -257,25 +257,25 @@ Para adquirir dados de chuva e vazão para incorporar ao modelo MGB-IPH pode-se 
 
 Os dados de precipitação devem ser interpolados e agregados a nível das minibacias do MGB, mas antes de realizar a interpolação dos dados extraídos do aplicativo é necessário realizar um pré‑processamento do arquivo .csv para separar os dados em arquivos .txt para cada ponto do GRID e atualizar as bases de dados internas da interface do modelo. Para isso, abra a ferramenta “GEE_Precipitation” (Figura 21) situada na aba “Tools” da interface. Em input selecione o arquivo .csv com o GRID de precipitação gerado na seção 4.1.1. e em output selecione uma pasta onde serão armazenados os arquivos .txt com a série temporal de precipitação para cada ponto do GRID. Por fim clique em “Run” e aguarde a confirmação do processamento.
 
-![Aplicação da ferramenta GEE Precipitation.](assets/figura-21.png)
+![Aplicação da ferramenta GEE Precipitation.](../assets/figura-21.png)
 
 **Figura 21. Aplicação da ferramenta GEE Precipitation.**
 
 O processamento pode demorar, mas a geração dos arquivos de saída pode ser acompanhada a partir da pasta informada no output da ferramenta. Devem ser totalizados 720 arquivos .txt (Figura 22) na pasta, correspondente ao número de pontos no GRID.
 
-![Exemplo de arquivo de saída da ferramenta GEE Precipitation. A primeira coluna corresponde ao dia do mês, a segunda ao mês do ano, a terceira ao ano e a quarta ao dado de precipitação diária.](assets/figura-22.png)
+![Exemplo de arquivo de saída da ferramenta GEE Precipitation. A primeira coluna corresponde ao dia do mês, a segunda ao mês do ano, a terceira ao ano e a quarta ao dado de precipitação diária.](../assets/figura-22.png)
 
 **Figura 22. Exemplo de arquivo de saída da ferramenta GEE Precipitation. A primeira coluna corresponde ao dia do mês, a segunda ao mês do ano, a terceira ao ano e a quarta ao dado de precipitação diária.**
 
 Após gerados os arquivos de saída, o usuário pode prosseguir para a interpolação dos dados de precipitação para as minibacias. Embora os dados que estamos utilizando não sejam provenientes da Agência Nacional de Águas a ferramenta “Using ANA Data (Brazil)” realiza a leitura e interpolação dos dados no formato que preparamos a partir do passo anterior. Portanto, abra a ferramenta (Figura 23) localizada na aba “Precipitation” do menu principal. Clique no botão “Load data” e selecione todos os arquivos gerados a partir do “GEE Precipitation”. Após carregar todos os dados na ferramenta insira o arquivo MINI.gtp gerado na seção 4.2 no bloco do canto superior direito. Confira se a data definida para a interpolação corresponde com a disponibilidade de dados dos arquivos de entrada e selecione uma pasta para armazenar o arquivo de saída. Aqui o arquivo de saída foi salvo como “PRECIP”.
 
-![Ferramenta de interpolação de dados de chuva.](assets/figura-23.png)
+![Ferramenta de interpolação de dados de chuva.](../assets/figura-23.png)
 
 **Figura 23. Ferramenta de interpolação de dados de chuva.**
 
 Também é interessante criar um shapefile dos pontos do GRID para poder visualizar a localização dos mesmos na bacia hidrográfica. Para isso clique na opção “Create stations shapefile”. A Figura 24 mostra o GRID de precipitação utilizado neste manual.
 
-![GRID de precipitação utilizado na interpolação dos dados de chuva.](assets/figura-24.png)
+![GRID de precipitação utilizado na interpolação dos dados de chuva.](../assets/figura-24.png)
 
 **Figura 24. GRID de precipitação utilizado na interpolação dos dados de chuva.**
 
@@ -285,13 +285,13 @@ Após realizada a interpolação dos dados de chuva, volte a ferramenta “GEE P
 
 Para adquirir dados de vazão para a calibração do modelo MGB-IPH você pode utilizar a ferramenta “ANA data acquisition”, que permite o download automático de vários postos fluviométricos da sua região de interesse. Na ferramenta, marque a opção “Discharge” no topo e indique o mesmo período de dados utilizado para os dados de precipitação na seção anterior para baixar os dados de vazão. Importante manter a mesma data para chuva e vazão. Crie um arquivo .txt como o ilustrado na Figura 25 e o salve como “gauges.txt”.
 
-![Códigos das estações fluviométricas selecionadas para calibração.](assets/figura-25.png)
+![Códigos das estações fluviométricas selecionadas para calibração.](../assets/figura-25.png)
 
 **Figura 25. Códigos das estações fluviométricas selecionadas para calibração.**
 
 Em seguida marque a opção “Gauges” como tipo de dado de entrada. Indique o arquivo “gauges.txt”. Indique uma pasta para armazenar as séries de vazão dos postos fluviométricos em “Destination folder”, e baixe os dados em “Download Data” (Figura 26).
 
-![Ferramenta ANA data acquisition para download automático de dados de vazão da ANA.](assets/figura-26.png)
+![Ferramenta ANA data acquisition para download automático de dados de vazão da ANA.](../assets/figura-26.png)
 
 **Figura 26. Ferramenta ANA data acquisition para download automático de dados de vazão da ANA.**
 
@@ -303,11 +303,11 @@ Para gerar o arquivo de vazão para o MGB, é importante que visualize a disponi
 
 Existe a possibilidade de preencher as minibacias de forma automática, selecionando a opção “Automatically Suggest Catchment”. Ao selecionar esta opção, uma janela abrirá solicitando que carregue o arquivo MINI.gtp gerado anteriormente. Após selecionar, o programa vai sugerir automaticamente minibacias associadas às estações fluviométricas. Entretanto, em alguns casos a localização da estação fica dentro de uma minibacia incorreta. Isso ocorre porque as coordenadas dos postos fluviométricos fornecidas pela ANA são aproximadas, e porque há incertezas nos dados da BHO. Assim, é fundamental checar se a mini-bacia escolhida automaticamente pelo programa é a mais correta. Uma forma de fazer esta verificação é comparando a área de drenagem da mini-bacia escolhida com a área de drenagem do posto fluviométrico, que é informada no Hidroweb da ANA. Para isso, adicione o shapefile de postos fluviométricos ao projeto. Para cada posto é possível descobrir o número da minibacia correspondente adicionando o label do campo Mini no layer dos centroides das minibacias, e usando as ferramentas de zoom com o shapefile das estações carregado no projeto. A Figura 27 apresenta as estações utilizadas e o zoom dado no shapefile das minibacias e das estações para verificação. Para este manual, as estações associadas às minibacias são apresentadas na Figura 28. O arquivo de vazões observadas gerado para o rio Carinhanha recebeu o nome `QOBS.qob`. Em seguida, clique no botão “Create observed Discharge file” e feche a janela.
 
-![Verificação da minibacia associada à estação fluviométrica.](assets/figura-27.jpg)
+![Verificação da minibacia associada à estação fluviométrica.](../assets/figura-27.jpg)
 
 **Figura 27. Verificação da minibacia associada à estação fluviométrica.**
 
-![Ferramenta das vazões observadas com a correlação das minibacias com estações fluviométricas.](assets/figura-28.png)
+![Ferramenta das vazões observadas com a correlação das minibacias com estações fluviométricas.](../assets/figura-28.png)
 
 **Figura 28. Ferramenta das vazões observadas com a correlação das minibacias com estações fluviométricas.**
 
@@ -317,11 +317,11 @@ Para calcular a evapotranspiração no modelo MGB são utilizados dados de tempe
 
 Na tabela da esquerda, existe uma lista das estações climatológicas disponíveis. Para utilizar uma dada estação, selecione na tabela da esquerda e a transfira para a tabela da direita pelo botão ">>". Caso queira saber quais são as estações climatológicas próximas à sua área de estudo, você pode criar um shapefile das estações clicando em "Create Shapefile of Climatological Stations from MGB database", adicionar o shapefile ao projeto e localizar as estações mais próximas (Figura 29). Neste manual utilizaremos as estações apresentadas na Figura 30.
 
-![Estações climatológicas próximas a bacia do rio Carinhanha.](assets/figura-29.jpg)
+![Estações climatológicas próximas a bacia do rio Carinhanha.](../assets/figura-29.jpg)
 
 **Figura 29. Estações climatológicas próximas a bacia do rio Carinhanha.**
 
-![Interface da base de dados interna de clima do MGB.](assets/figura-30.png)
+![Interface da base de dados interna de clima do MGB.](../assets/figura-30.png)
 
 **Figura 30. Interface da base de dados interna de clima do MGB.**
 
@@ -333,7 +333,7 @@ Para definir os parâmetros de vegetação deve ser acionada a ferramenta “Veg
 
 Algumas sugestões de valores que devem ser adotados aparecem na própria janela de edição dos parâmetros de vegetação. A Tabela 4 apresenta os valores adotados para os parâmetros de vegetação na aplicação na bacia do rio Carinhanha que devem ser inseridos na ferramenta. Por simplificação, assumimos valores constantes para os diferentes meses.
 
-![Janela da ferramenta de definição dos parâmetros fixos.](assets/figura-31.png)
+![Janela da ferramenta de definição dos parâmetros fixos.](../assets/figura-31.png)
 
 **Figura 31. Janela da ferramenta de definição dos parâmetros fixos.**
 
@@ -359,7 +359,7 @@ Quando terminar de preencher os valores clique em “Save vegetation parameters 
 
 Os parâmetros de solo costumam ser alterados no processo de calibração e, também, estão associados às URHs. Para definir os parâmetros de solo deve ser acionada a ferramenta “Soil Parameters” e iniciar um novo arquivo de parâmetros de solo. Para isso, é necessário abrir o arquivo de blocos, o arquivo de minibacias (MINI.gtp) e depois clicar no botão “New soil parameters file”. A Figura 32 mostra janela com os valores preenchidos e a Tabela 5 mostra os valores adotados para cada classe de resposta hidrológica.
 
-![Janela da ferramenta de definição dos parâmetros calibráveis.](assets/figura-32.png)
+![Janela da ferramenta de definição dos parâmetros calibráveis.](../assets/figura-32.png)
 
 **Figura 32. Janela da ferramenta de definição dos parâmetros calibráveis.**
 
@@ -387,7 +387,7 @@ Quando todos os parâmetros estiverem preenchidos, clique no botão “Save soil
 
 Para podermos rodar a simulação, é necessário agregar as informações que geramos nos últimos passos em um único arquivo de projeto. Para isto clique na ferramenta “Create/Edit Simulation Project” no menu do MGB e uma janela como a da Figura 33 irá abrir. Vamos agora preencher cada um dos campos com os arquivos corretos. É importante ter o cuidado para que nenhum arquivo apresente caracteres especiais no nome ou nas pastas dos arquivos, para evitar futuros erros na simulação.
 
-![Ferramenta de projeto para entrada na simulação.](assets/figura-33.png)
+![Ferramenta de projeto para entrada na simulação.](../assets/figura-33.png)
 
 **Figura 33. Ferramenta de projeto para entrada na simulação.**
 
@@ -401,7 +401,7 @@ Se a intenção do usuário for realizar a simulação por Muskingum-Cunge, cliq
 
 Com o projeto preparado abra a janela de simulação do MGB no menu principal em “Run Simulation”. É necessário especificar o arquivo de projeto que será simulado. No caso do rio Carinhanha vamos simular o projeto recém-criado “projeto_carinhanha.mgb" (Figura 34).
 
-![Janela de simulação do MGB com o projeto carregado.](assets/figura-34.png)
+![Janela de simulação do MGB com o projeto carregado.](../assets/figura-34.png)
 
 **Figura 34. Janela de simulação do MGB com o projeto carregado.**
 
@@ -425,11 +425,11 @@ Os resultados podem ser visualizados utilizando as ferramentas no menu Results d
 
 Clique na opção de nome “Compare observed and calculated hydrographs”. Neste momento é necessário que o layer “mini” das minibacias no menu de layers esteja selecionado e visível no projeto do QGIS. O próprio programa emite um aviso neste sentido. No momento em que você seleciona a opção de visualizar os hidrogramas fica habilitada a ferramenta de seleção com o mouse. Para visualizar os hidrogramas basta então selecionar a minibacia que possua dados observados. Um gráfico será exibido como na Figura 35, referente ao posto fluviométrico Juvenília (45260000). A Figura 36 apresenta a série de vazões simuladas e observadas referentes a minibacia da estação fluviométrica São Gonçalo (45131000).
 
-![Hidrograma de vazões calculadas e observadas da estação 45260000.](assets/figura-35.png)
+![Hidrograma de vazões calculadas e observadas da estação 45260000.](../assets/figura-35.png)
 
 **Figura 35. Hidrograma de vazões calculadas e observadas da estação 45260000.**
 
-![Hidrograma de vazões calculadas e observadas da estação 45131000.](assets/figura-36.png)
+![Hidrograma de vazões calculadas e observadas da estação 45131000.](../assets/figura-36.png)
 
 **Figura 36. Hidrograma de vazões calculadas e observadas da estação 45131000.**
 
@@ -437,7 +437,7 @@ Clique na opção de nome “Compare observed and calculated hydrographs”. Nes
 
 Também é possível gerar gráficos de curvas de permanência nas minibacias utilizando a ferramenta “Compare flow duration” curves no menu Results. A Figura 37 mostra um exemplo de curvas de permanência geradas no posto fluviométrico Juvenília (45260000), localizada no rio Carinhanha. Observa-se que as vazões mínimas calculadas estão inferiores às vazões mínimas observadas. Isto pode ser melhorado calibrando os parâmetros do modelo.
 
-![Curvas de permanência calculada e observada para o posto 45260000.](assets/figura-37.png)
+![Curvas de permanência calculada e observada para o posto 45260000.](../assets/figura-37.png)
 
 **Figura 37. Curvas de permanência calculada e observada para o posto 45260000.**
 
@@ -453,7 +453,7 @@ Ainda no menu Results, é possível selecionar a opção “Visualize flow durat
 
 Se a simulação foi realizada com o modelo inercial, o MGB oferece também a visualização dos resultados de série temporal de profundidades de água. Para visualizar a série de níveis, acesse no menu Results a ferramenta “Visualize water depth time series”. A Figura 38 apresenta o resultado da simulação da série de profundidades do rio Carinhanha.
 
-![Série de profundidades de água resultante da simulação do Carinhanha com o MGB Inercial.](assets/figura-38.png)
+![Série de profundidades de água resultante da simulação do Carinhanha com o MGB Inercial.](../assets/figura-38.png)
 
 **Figura 38. Série de profundidades de água resultante da simulação do Carinhanha com o MGB Inercial.**
 
@@ -461,7 +461,7 @@ Se a simulação foi realizada com o modelo inercial, o MGB oferece também a vi
 
 Com a aplicação do Modelo Inercial, o MGB também oferece os resultados da simulação para área inundada. Assim como a série de níveis, o presente manual apresenta resultados de área inundada para toda a bacia do rio Carinhanha. Para visualizar a série de área inundada, clique em “Visualize flooded area time series” no menu Results. A Figura 39 apresenta o resultado da visualização da série de área inundada.
 
-![Série de área inundada resultante da simulação do rio Carinhanha com o MGB Inercial.](assets/figura-39.png)
+![Série de área inundada resultante da simulação do rio Carinhanha com o MGB Inercial.](../assets/figura-39.png)
 
 **Figura 39. Série de área inundada resultante da simulação do rio Carinhanha com o MGB Inercial.**
 
